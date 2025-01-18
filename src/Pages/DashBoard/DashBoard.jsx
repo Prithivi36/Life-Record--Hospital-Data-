@@ -3,6 +3,7 @@ import image from "../../assets/image.png"
 import DashHeader from "./DashHeader"
 import DashInfo from "./DashInfo"
 import DashContact from "./DashContact"
+import DashScans from "./DashScans"
 import DashMedRecords from "./DashMedRecords"
 function DashBoard() {
   return (
@@ -22,6 +23,13 @@ function DashBoard() {
         <div className="p-4 pb-0 d-flex flex-column gap-3 rounded-4 shadow-sm  bg-white">
             <p className="fs-5 fw-medium">Recent Medical Records</p>
             <DashMedRecords />
+            <div className="end">
+                <p className="text-center text-primary text-decoration-none border-top py-3 more m-0">View more</p>
+            </div>
+        </div>
+        <div className="p-4 pb-0 d-flex flex-column gap-3 rounded-4 shadow-sm  bg-white">
+            <p className="fs-5 fw-medium">Scans & Report</p>
+            <DashScans />
             <div className="end">
                 <p className="text-center text-primary text-decoration-none border-top py-3 more m-0">View more</p>
             </div>
