@@ -74,3 +74,9 @@ button:focus-visible {
   width: 100px;
   height: 100px;
 }
+.callout{
+  border-left: 5px solid blue;
+}
+.more{
+  cursor: pointer;
+}

@@ -18,7 +18,7 @@ function DashContact() {
     
     {contact.map((c)=>{
         return(
-        <div className=" d-flex align-items-center p-3 mb-3 bg-light">
+        <div className=" d-sm-flex align-items-center p-3 mb-3 bg-light">
             <div className="">
                 <p className="fw-medium">{c.name}</p>
                 <p className="text-secondary m-0 fw-light">{c.relation}</p>
