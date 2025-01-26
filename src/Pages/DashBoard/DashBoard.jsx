@@ -5,7 +5,9 @@ import DashInfo from "./DashInfo"
 import DashContact from "./DashContact"
 import DashScans from "./DashScans"
 import DashMedRecords from "../Records/DashMedRecords"
+import { useNavigate } from "react-router"
 function DashBoard() {
+    const navigator = useNavigate();
   return (
     <div className="bg-light d-flex flex-column gap-3 p-4">
         <div className="p-4 d-flex flex-column gap-3 rounded-4 shadow-sm  bg-white">
@@ -24,7 +26,7 @@ function DashBoard() {
             <p className="fs-5 fw-medium">Recent Medical Records</p>
             <DashMedRecords sample={true} />
             <div className="end">
-                <p className="text-center text-primary text-decoration-none border-top py-3 more m-0">View more</p>
+                <p onClick={()=>navigator("/records")} className="text-center text-primary text-decoration-none border-top py-3 more m-0">View more</p>
             </div>
         </div>
         <div className="p-4 pb-0 d-flex flex-column gap-3 rounded-4 shadow-sm  bg-white">

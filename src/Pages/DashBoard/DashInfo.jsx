@@ -19,9 +19,9 @@ function DashInfo() {
   return (
     <>
         {
-            info.map((i)=>{
+            info.map((i,ind)=>{
                 return(
-                    <div className="dob d-flex gap-3 align-items-center">
+                    <div key={ind} className="dob d-flex gap-3 align-items-center">
                     <i className={`bi bi-${i.icon} fw-bolder fs-5 text-secondary`}></i>
                     <div className="">
                         <p className="text-secondary my-0">{i.field}</p>

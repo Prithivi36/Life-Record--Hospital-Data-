@@ -20,9 +20,9 @@ function DashScans() {
         }
       ];
   return (
-    scans.map((s)=>{
+    scans.map((s,i)=>{
         return(
-            <div className="card flex-row p-3">
+            <div key={i} className="card flex-row p-3">
                 <div className="">
                     <p className="text-dark fw-semibold">{s.testName}</p>
                     <p className="text-secondary m-0">{s.date}</p>
