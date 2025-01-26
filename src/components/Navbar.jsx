@@ -9,13 +9,13 @@ function Navbar() {
             <div className="collapse navbar-collapse" id="navbarText">
                 <ul className="navbar-nav ms-auto">
                 <li className="nav-item active">
-                    <a className="nav-link" href="#">DashBoard </a>
+                    <a className="nav-link text-white" href="#">DashBoard </a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Notifications</a>
+                    <a className="nav-link text-white" href="#">Notifications</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Report</a>
+                    <a className="nav-link text-white" href="#">Report</a>
                 </li>
                 </ul>
             </div>

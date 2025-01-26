@@ -80,3 +80,14 @@ button:focus-visible {
 .more{
   cursor: pointer;
 }
+.collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+}
+
+.collapsible.expanded {
+    max-height: 5000px;
+    opacity: 1;
+}

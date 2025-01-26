@@ -4,7 +4,7 @@ import DashHeader from "./DashHeader"
 import DashInfo from "./DashInfo"
 import DashContact from "./DashContact"
 import DashScans from "./DashScans"
-import DashMedRecords from "./DashMedRecords"
+import DashMedRecords from "../Records/DashMedRecords"
 function DashBoard() {
   return (
     <div className="bg-light d-flex flex-column gap-3 p-4">
@@ -22,7 +22,7 @@ function DashBoard() {
         </div>
         <div className="p-4 pb-0 d-flex flex-column gap-3 rounded-4 shadow-sm  bg-white">
             <p className="fs-5 fw-medium">Recent Medical Records</p>
-            <DashMedRecords />
+            <DashMedRecords sample={true} />
             <div className="end">
                 <p className="text-center text-primary text-decoration-none border-top py-3 more m-0">View more</p>
             </div>
