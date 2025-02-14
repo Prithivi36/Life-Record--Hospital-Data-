@@ -8,7 +8,7 @@ function RecordsDetail() {
     "followUp":true,
     "followUpDate": "10-4-2024",
     "doctor": {
-      "name": "Dr. Patel",
+      "name": "Dr. Shanmuga Sundaram",
       "date": "10/3/2024"
     },
     "hospital": "City Hospital",
@@ -35,9 +35,9 @@ function RecordsDetail() {
     <div className="container mt-4 p-3 border rounded bg-light">
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
         <h4 className="m-0">{data.title}</h4>
-        <p className="text-primary">
+        {data.followUp?<p className="text-primary">
           <i className="bi bi-calendar-event"></i> Follow-up: {data.followUpDate}
-        </p>
+        </p>:<p className="text-primary">completed</p>}
       </div>
       <div className="mb-3">
         <p className="m-0 text-secondary">
