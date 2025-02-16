@@ -1,8 +1,11 @@
+import Navbar from "../../components/Navbar"
 import DashMedRecords from "./DashMedRecords"
 import RecordsDetail from "./RecordsDetail/RecordsDetail"
 
 function RecordsMain() {
   return (
+    <>
+    <Navbar/>
     <div className="p-sm-5 p-3">
         <div className="card p-3">
             <div className="head border-bottom mb-3 pb-3">
@@ -30,6 +33,7 @@ function RecordsMain() {
             </div>
         </div>
     </div>
+    </>
   )
 }
 export default RecordsMain

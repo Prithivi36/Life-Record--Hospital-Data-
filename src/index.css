@@ -94,3 +94,15 @@ button:focus-visible {
     max-height: 5000px;
     opacity: 1;
 }
+.log{
+  min-height: 100vh;
+}
+.cust-inp{
+  border: none;
+  border-bottom: solid 3px blue;
+  padding: 8px 12px;
+}
+.cust-form{
+  max-height: 80vh;
+  overflow: scroll  ;
+}

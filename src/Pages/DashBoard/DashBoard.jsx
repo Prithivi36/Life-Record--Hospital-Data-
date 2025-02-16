@@ -6,9 +6,12 @@ import DashContact from "./DashContact"
 import DashScans from "./DashScans"
 import DashMedRecords from "../Records/DashMedRecords"
 import { useNavigate } from "react-router"
+import Navbar from "../../components/Navbar"
 function DashBoard() {
     const navigator = useNavigate();
   return (
+    <>
+    <Navbar />
     <div className="bg-light d-flex flex-column gap-3 p-4">
         <div className="p-4 d-flex flex-column gap-3 rounded-4 shadow-sm  bg-white">
             <div className="d-sm-flex text-center text-sm-start align-items-center">
@@ -18,7 +21,10 @@ function DashBoard() {
                 <DashInfo/>
             </div>
             <div className="ps-3">
-                <p className="text-primary-emphasis  fw-bold">Emergency Contact</p>
+                <div className="d-flex justify-content-between">
+                    <p className="text-primary-emphasis  fw-bold">Emergency Contact</p>
+                    <i className="bi fw-bolder text-primary text-decoration-none bi-plus"> Add</i>
+                </div>
                     <DashContact />
             </div>
         </div>
@@ -37,6 +43,7 @@ function DashBoard() {
             </div>
         </div>
     </div>
+    </>
   )
 }
 export default DashBoard
