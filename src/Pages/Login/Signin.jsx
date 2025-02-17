@@ -1,6 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook, faGoogle, faApple } from "@fortawesome/free-brands-svg-icons";
 import React from "react";
 import { useNavigate } from "react-router";
 
@@ -24,7 +21,7 @@ function Signin(props) {
               <label className="form-label">E-mail</label>
               <div className="input-group">
                 <span className="input-group-text">
-                  <FontAwesomeIcon icon={faEnvelope} />
+                  <i className="bi bi-envelope"></i>
                 </span> 
                 <input
                   type="email"
@@ -50,9 +47,8 @@ function Signin(props) {
                 <span
                   className="input-group-text"
                   onClick={() => setShowPassword(!showPassword)}
-                  style={{ cursor: "pointer" }}
-                >
-                  <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                  style={{ cursor: "pointer" }}>
+                  <i className="bi bi-eye"></i>
                 </span>
               </div>
             </div>
@@ -61,7 +57,7 @@ function Signin(props) {
           <div className="text-center my-3">or sign in with</div>
             <div className="d-flex justify-content-center gap-3">
                 <button className="btn btn-outline-secondary">
-                    <FontAwesomeIcon icon={faGoogle} style={{ color: "#DB4437" }} />
+                    <i className="bi bi-google"></i>
                 </button>
                 <button className="btn btn-outline-secondary">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqIDw7FiQKOeXZgUKEBfa7MRHV6UuPTfTCkA&s" alt="DigiLocker" width="20" height="20" />
