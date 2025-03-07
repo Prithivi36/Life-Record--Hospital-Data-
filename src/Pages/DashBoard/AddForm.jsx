@@ -3,9 +3,44 @@ import React from 'react'
 function AddForm() {
     const [form,setForm]=React.useState({
         condition :"",
-        symptoms:""
+        symptoms:"",
+        prescriptionName: "",
+        dosage: "",
+        daily: "",
+        duration: "",
+        instructions: ""
     })
     const [comp,setComp]=React.useState([])
+    const [prescriptions, setPrescriptions] = React.useState([]);
+    function addPrescription(event) {
+        event.preventDefault();
+        if (!form.prescriptionName || !form.dosage || !form.daily || !form.duration || !form.instructions) {
+          alert("Please fill in all the fields for the prescription");
+        } else {
+          setPrescriptions((prev) => [
+            ...prev, 
+            {
+              name: form.prescriptionName,
+              dosage: form.dosage,
+              daily: form.daily,
+              duration: form.duration,
+              instructions: form.instructions
+            }
+          ]);
+          setForm((prev) => ({
+            ...prev,
+            prescriptionName: "",
+            dosage: "",
+            daily: "",
+            duration: "",
+            instructions: ""
+          }));
+        }
+      }
+    
+      function removePrescription(index) {
+        setPrescriptions((prevPrescriptions) => prevPrescriptions.filter((_, i) => i !== index));
+      }
     function addSymp(event){
         event.preventDefault()
         if(form.symptoms==""){
@@ -43,14 +78,91 @@ function AddForm() {
                         <input value={form.symptoms} name='symptoms' onChange={()=>handleChange(event)} id="symp" className='form-control ' placeholder='Symptoms ' type="text" />
                         <button onClick={()=>addSymp(event)} className="btn btn-primary"> add</button>
                     </div>
-                    <ul>
+                    <div className="d-flex flex-wrap">
                         {
                             comp.map((ele,i)=>{
-                                return(<li onClick={()=>removeSymptom(i)}>{ele}</li>)
+                                return(
+                                    <>
+                                    <div className="m-3"><div className="d-inline m-0 bg-light p-2 rounded-3">{ele}</div><div className="d-inline text-secondary"  onClick={()=>removeSymptom(i)}>&nbsp;&nbsp;&nbsp;&nbsp; x</div></div>
+                                    </>
+                                )
                             })
                         }
                         
-                    </ul>
+                    </div>
+                    <label htmlFor="prescriptionName">Prescription Name</label>
+                    <input
+                    name="prescriptionName"
+                    onChange={handleChange}
+                    id="prescriptionName"
+                    className="form-control mb-3"
+                    placeholder="Prescription Name"
+                    type="text"
+                    value={form.prescriptionName}
+                    />
+
+                    <label htmlFor="dosage">Dosage</label>
+                    <input
+                    name="dosage"
+                    onChange={handleChange}
+                    id="dosage"
+                    className="form-control mb-3"
+                    placeholder="Dosage"
+                    type="text"
+                    value={form.dosage}
+                    />
+
+                    <label htmlFor="daily">Daily Frequency</label>
+                    <input
+                    name="daily"
+                    onChange={handleChange}
+                    id="daily"
+                    className="form-control mb-3"
+                    placeholder="Daily Frequency"
+                    type="text"
+                    value={form.daily}
+                    />
+
+                    <label htmlFor="duration">Duration</label>
+                    <input
+                    name="duration"
+                    onChange={handleChange}
+                    id="duration"
+                    className="form-control mb-3"
+                    placeholder="Duration"
+                    type="text"
+                    value={form.duration}
+                    />
+
+                    <label htmlFor="instructions">Instructions</label>
+                    <input
+                    name="instructions"
+                    onChange={handleChange}
+                    id="instructions"
+                    className="form-control mb-3"
+                    placeholder="Instructions"
+                    type="text"
+                    value={form.instructions}
+                    />
+
+                    <button onClick={addPrescription} className="btn btn-primary">
+                    Add Prescription
+                    </button>
+
+                    <div className="d-flex flex-wrap mt-3">
+                    {prescriptions.map((presc, i) => {
+                        return (
+                        <div key={i} className="m-3">
+                            <div className="bg-light p-2 rounded-3">
+                            {presc.name} - {presc.dosage} - {presc.daily} - {presc.duration} days - {presc.instructions}
+                            </div>
+                            <div className="d-inline text-secondary" onClick={() => removePrescription(i)}>
+                            &nbsp;&nbsp;&nbsp;&nbsp; x
+                            </div>
+                        </div>
+                        );
+                    })}
+                    </div>
                 </form>
             </div>
             <div className="modal-footer">
