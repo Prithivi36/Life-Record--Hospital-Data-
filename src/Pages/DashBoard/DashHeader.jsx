@@ -1,4 +1,5 @@
 import image from "../../assets/image.png"
+import AddForm from "./AddForm"
 
 
 function DashHeader() {
@@ -11,7 +12,8 @@ function DashHeader() {
             <h4 className="m-0 fw-bold">Rahul Sharma</h4>
             <p className="text-secondary m-0">ID : 6818 8659 3676</p>
         </div>
-        <button  disabled className="btn btn-primary ms-auto">Add Records</button>
+        <button data-bs-target="#addform" data-bs-toggle="modal"   className="btn btn-primary ms-auto">Add Records</button>
+        <AddForm/>
     </>
   )
 }
