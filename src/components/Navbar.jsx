@@ -8,18 +8,21 @@ function Navbar() {
             </button>
             <div className="collapse navbar-collapse" id="navbarText">
                 <ul className="navbar-nav ms-auto">
-                <li className="nav-item active">
-                    <a className="nav-link text-white" href="#dashboard">DashBoard </a>
-                </li>
-                <li className="nav-item active">
-                    <a className="nav-link text-white" href="#/records">Records </a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link text-white" href="#">Notifications</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link text-white" href="#">Report</a>
-                </li>
+                    <li className="nav-item active">
+                        <a className="nav-link text-white" href="#dashboard">DashBoard </a>
+                    </li>
+                    <li className="nav-item active">
+                        <a className="nav-link text-white" href="#/records">Records </a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link text-white" href="#">Notifications</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link text-white" href="#">Report</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link text-white" href="#">Activities</a>
+                    </li>
                 </ul>
             </div>
         </nav>

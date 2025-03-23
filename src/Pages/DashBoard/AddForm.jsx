@@ -69,15 +69,18 @@ function AddForm() {
             <div className="modal-header">
                 <h5 className="modal-title">Add Diagnosis</h5>
             </div>
-            <div className="modal-body">
-                <form action="">
-                    <label htmlFor="condi">Patient Condition</label>
-                    <input name='condition' onChange={()=>handleChange(event)} id='condi' className='form-control mb-3' placeholder='Patient Condition ' type="text" />
-                    <label htmlFor="symp">Symptoms</label>
-                    <div className='input-group mb-3'>
-                        <input value={form.symptoms} name='symptoms' onChange={()=>handleChange(event)} id="symp" className='form-control ' placeholder='Symptoms ' type="text" />
-                        <button onClick={()=>addSymp(event)} className="btn btn-primary"> add</button>
+            <div className="modal-body ">
+                <form className='' action="">
+                    <p className='fw-bolder mb-3 pb-0'>Condition :</p>
+                    <div className="form-floating">
+                        <input name='condition' onChange={()=>handleChange(event)} id='condi' className='form-control mb-3' placeholder='Patient Condition ' type="text" />
+                        <label className='text-secondary fw-medium' htmlFor="condi">Patient Condition</label>
                     </div>
+                        <label className=' fw-medium mb-3' htmlFor="symp">Symptoms:</label>
+                        <div className='input-group mb-3'>
+                            <input id="symp"  value={form.symptoms} name='symptoms' onChange={()=>handleChange(event)}  className='form-control ' placeholder='Symptoms ' type="text" />
+                            <button onClick={()=>addSymp(event)} className="btn btn-primary"> add</button>
+                        </div>
                     <div className="d-flex flex-wrap">
                         {
                             comp.map((ele,i)=>{
@@ -90,60 +93,81 @@ function AddForm() {
                         }
                         
                     </div>
-                    <label htmlFor="prescriptionName">Prescription Name</label>
-                    <input
-                    name="prescriptionName"
-                    onChange={handleChange}
-                    id="prescriptionName"
-                    className="form-control mb-3"
-                    placeholder="Prescription Name"
-                    type="text"
-                    value={form.prescriptionName}
-                    />
+                    <p className='fw-bolder mb-3 pb-0'>Prescription :</p>
+                    <div className="d input-group column-gap-4 align-items-center justify-content-center">
+                        <div className="">
+                            <div className="form-floating">
 
-                    <label htmlFor="dosage">Dosage</label>
-                    <input
-                    name="dosage"
-                    onChange={handleChange}
-                    id="dosage"
-                    className="form-control mb-3"
-                    placeholder="Dosage"
-                    type="text"
-                    value={form.dosage}
-                    />
+                                <input
+                                name="prescriptionName"
+                                onChange={handleChange}
+                                id="prescriptionName"
+                                className="form-control mb-3"
+                                placeholder="Prescription Name"
+                                type="text"
+                                value={form.prescriptionName}
+                                />
+                                <label className='text-secondary fw-medium' htmlFor="prescriptionName">Prescription Name</label>
+                            </div>
+                        </div>
+                        <div className="">
 
-                    <label htmlFor="daily">Daily Frequency</label>
-                    <input
-                    name="daily"
-                    onChange={handleChange}
-                    id="daily"
-                    className="form-control mb-3"
-                    placeholder="Daily Frequency"
-                    type="text"
-                    value={form.daily}
-                    />
+                            <div className="form-floating">
+                                <input
+                                name="dosage"
+                                onChange={handleChange}
+                                id="dosage"
+                                className="form-control mb-3"
+                                placeholder="Dosage"
+                                type="text"
+                                value={form.dosage}
+                                />
+                                <label className='text-secondary fw-medium' htmlFor="dosage">Dosage</label>
+                            </div>
+                        </div>
+                        <div className="">
 
-                    <label htmlFor="duration">Duration</label>
-                    <input
-                    name="duration"
-                    onChange={handleChange}
-                    id="duration"
-                    className="form-control mb-3"
-                    placeholder="Duration"
-                    type="text"
-                    value={form.duration}
-                    />
+                            <div className="form-floating">
+                                <input
+                                name="daily"
+                                onChange={handleChange}
+                                id="daily"
+                                className="form-control mb-3"
+                                placeholder="Daily Frequency"
+                                type="text"
+                                value={form.daily}
+                                />
+                                <label className='text-secondary fw-medium' htmlFor="daily">Daily Frequency</label>
+                            </div>
+                        </div>
+                        <div className="">
+                            <div className="form-floating">
+                                <input
+                                name="duration"
+                                onChange={handleChange}
+                                id="duration"
+                                className="form-control mb-3"
+                                placeholder="Duration"
+                                type="text"
+                                value={form.duration}
+                                />
+                                <label className='text-secondary fw-medium' htmlFor="duration">Duration</label>
+                            </div>
+                        </div>
+                    </div>
 
-                    <label htmlFor="instructions">Instructions</label>
-                    <input
-                    name="instructions"
-                    onChange={handleChange}
-                    id="instructions"
-                    className="form-control mb-3"
-                    placeholder="Instructions"
-                    type="text"
-                    value={form.instructions}
-                    />
+                    <div className="form-floating">
+                        <input
+                        name="instructions"
+                        onChange={handleChange}
+                        id="instructions"
+                        className="form-control mb-3"
+                        placeholder="Instructions"
+                        type="text"
+                        value={form.instructions}
+                        />
+                        <label className='text-secondary fw-medium' htmlFor="instructions">Instructions</label>
+                    </div>
 
                     <button onClick={addPrescription} className="btn btn-primary">
                     Add Prescription
