@@ -2,7 +2,7 @@ import React from "react";
 
 import logimg from './login.jpg'
 import Signin from "./Signin";
-import Signup from "./Signup";
+import Signup from "./Signup/Signup";
 
 function Login() {
     const [signup,setSignup]=React.useState(false);

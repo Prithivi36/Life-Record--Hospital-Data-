@@ -65,7 +65,7 @@ function Signin(props) {
             </div>
 
           <div className="text-center mt-3">
-            Don't have an account? <p onClick={()=>props.signin(true)}>Sign In</p>
+            Don't have an account? <p onClick={()=>props.signin(true)}>Sign up</p>
           </div>
         </div>
   )
