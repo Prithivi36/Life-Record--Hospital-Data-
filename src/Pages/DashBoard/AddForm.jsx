@@ -1,6 +1,7 @@
 import React from 'react'
 
 function AddForm() {
+    
     const [form,setForm]=React.useState({
         condition :"",
         symptoms:"",
@@ -8,7 +9,9 @@ function AddForm() {
         dosage: "",
         daily: "",
         duration: "",
-        instructions: ""
+        instructions: "",
+        followup:false,
+        followUpD:""
     })
     const [comp,setComp]=React.useState([])
     const [prescriptions, setPrescriptions] = React.useState([]);
@@ -37,7 +40,29 @@ function AddForm() {
           }));
         }
       }
-    
+      function handleSubmit(){
+        console.log(form)
+
+
+
+        const data ={
+            "title": form.condition,
+            "followUp":form.followup,
+            "followUpDate": form.followUpD,
+            "doctor": {
+              "name": "Dr. Shanmuga Sundaram",
+              "date": new Date().toLocaleDateString()
+            },
+            "hospital": "City Hospital",
+            "symptoms": comp,
+            "prescriptions": prescriptions,
+            "doctorNotes": form.instructions
+          }
+
+
+          console.log(data)
+
+      }
       function removePrescription(index) {
         setPrescriptions((prevPrescriptions) => prevPrescriptions.filter((_, i) => i !== index));
       }
@@ -59,9 +84,14 @@ function AddForm() {
     }
       
     function handleChange(event){
-        const {name,value}=event.target
-        setForm((prev)=>({...prev,[name]:value}))
+        const {name,value,type,checked}=event.target
+        if(type=="checkbox"){
+            setForm((prev)=>({...prev,[name]:checked}))
+        }else{
+            setForm((prev)=>({...prev,[name]:value}))
+        }
     }
+    console.log(form)
   return (
     <div id='addform' className="modal fade" >
         <div className="modal-dialog modal-dialog-centered">
@@ -82,15 +112,17 @@ function AddForm() {
                             <button onClick={()=>addSymp(event)} className="btn btn-primary"> add</button>
                         </div>
                     <div className="d-flex flex-wrap">
-                        {
-                            comp.map((ele,i)=>{
-                                return(
-                                    <>
-                                    <div className="m-3"><div className="d-inline m-0 bg-light p-2 rounded-3">{ele}</div><div className="d-inline text-secondary"  onClick={()=>removeSymptom(i)}>&nbsp;&nbsp;&nbsp;&nbsp; x</div></div>
-                                    </>
-                                )
-                            })
-                        }
+                    {
+                        comp.map((ele,i)=>{
+                            return(
+                                <>
+                                <div className="m-3"><div className="d-inline m-0 bg-light p-2 rounded-3">{ele}</div>
+                                    <div className="d-inline text-secondary"  onClick={()=>removeSymptom(i)}>&nbsp;&nbsp;&nbsp;&nbsp;× </div>
+                                </div>
+                                </>
+                            )
+                        })
+                    }
                         
                     </div>
                     <p className='fw-bolder mb-3 pb-0'>Prescription :</p>
@@ -178,19 +210,39 @@ function AddForm() {
                         return (
                         <div key={i} className="m-3">
                             <div className="bg-light p-2 rounded-3">
-                            {presc.name} - {presc.dosage} - {presc.daily} - {presc.duration} days - {presc.instructions}
+                                <p className='m-0 fw-bold'>Name and dosage</p>
+                                <div className="d-flex mb-3">
+                                    <p className=' m-0 me-4'>{presc.name} </p>
+                                    <p className=' m-0'>{presc.dosage}</p>
+                                </div>
+                                <p className='m-0 fw-bold'>Frequency</p>
+                                <div className="d-flex mb-3">
+                                    <p className=' m-0'>{presc.daily}</p>
+                                    <p className=' m-0'>{presc.duration}</p>
+                                </div>
+                                <p className='fw-bolder m-0'>{presc.instructions}</p>
                             </div>
                             <div className="d-inline text-secondary" onClick={() => removePrescription(i)}>
-                            &nbsp;&nbsp;&nbsp;&nbsp; x
+                            &nbsp;&nbsp;&nbsp;&nbsp; ×
                             </div>
                         </div>
                         );
                     })}
                     </div>
+                    <div className="">
+                        <div className="form-check form-switch">
+                            <input checked={form.followup} name='followup' onChange={handleChange} className="form-check-input" type="checkbox" id="switch" />
+                            <label  className="form-check-label" htmlFor="switch">Follow up</label>
+                        </div>
+                        {
+                            form.followup &&
+                            <input name='followUpD' className='form-control' onChange={handleChange} type="date" />
+                        }
+                    </div>
                 </form>
             </div>
             <div className="modal-footer">
-                <button type="button" className="btn btn-primary">Save changes</button>
+                <button type="button"  onClick={handleSubmit} className="btn btn-primary">Save changes</button>
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
             </div>
             </div>
