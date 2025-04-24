@@ -39,7 +39,7 @@ function DashBoard() {
             <p className="fs-5 fw-medium">Scans & Report</p>
             <DashScans />
             <div className="end">
-                <p className="text-center text-primary text-decoration-none border-top py-3 more m-0">View more</p>
+                <p onClick={()=>navigator("/reports")} className="text-center text-primary text-decoration-none border-top py-3 more m-0">View more</p>
             </div>
         </div>
     </div>

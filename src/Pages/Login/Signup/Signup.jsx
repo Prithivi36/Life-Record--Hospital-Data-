@@ -19,6 +19,7 @@ function Signup(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(userD)
+        //backed  wrk
         navigator("dashboard")
     };
     function handleChange(event){

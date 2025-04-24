@@ -14,14 +14,11 @@ function Navbar() {
                     <li className="nav-item active">
                         <a className="nav-link text-white" href="#/records">Records </a>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <a className="nav-link text-white" href="#">Notifications</a>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
-                        <a className="nav-link text-white" href="#">Report</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link text-white" href="#">Activities</a>
+                        <a className="nav-link text-white" href="#/reports">Report</a>
                     </li>
                 </ul>
             </div>

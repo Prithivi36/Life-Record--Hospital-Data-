@@ -7,7 +7,7 @@ function Details2({ handleChange, usd, handleSubmit, thn }) {
                 <label htmlFor="bloodGroup" className="form-label">Select Blood Group</label>
                 <div className="mb-3 gap-5">
                     <select name="blood" className="form-select" id="bloodGroup" value={usd.blood} onChange={handleChange} required>
-                        <option value="" disabled>Choose...</option>
+                        <option value="" disabled>Choose . . . </option>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
                         <option value="B+">B+</option>
@@ -29,8 +29,16 @@ function Details2({ handleChange, usd, handleSubmit, thn }) {
                     <input name="emergency1" className="form-control" placeholder="Emergency contact 1" type="text" onChange={handleChange} required />
                 </div>
                 <div className="mb-3">
+                    <label className="form-label" >Emergency Contact 1 Name</label>
+                    <input name="emergency1_name" className="form-control" placeholder="Emergency contact 1 Name" type="text" onChange={handleChange} required />
+                </div>
+                <div className="mb-3">
                     <label className="form-label">Emergency Contact 2</label>
                     <input name="emergency2" className="form-control" placeholder="Emergency contact 2" type="text" onChange={handleChange} required />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Emergency Contact 2 Name</label>
+                    <input name="emergency2_name" className="form-control" placeholder="Emergency contact 2 Name" type="text" onChange={handleChange} required />
                 </div>
             </div>
 
