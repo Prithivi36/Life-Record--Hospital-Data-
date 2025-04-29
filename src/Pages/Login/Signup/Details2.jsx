@@ -23,22 +23,19 @@ function Details2({ handleChange, usd, handleSubmit, thn }) {
                     <label htmlFor="profile">Upload your image</label>
                     <input id="profile" type="file" className="form-control" />
                 </div>
-
+                <h3>Emergency :</h3>
                 <div className="mb-3">
-                    <label className="form-label">Emergency Contact 1</label>
-                    <input name="emergency1" className="form-control" placeholder="Emergency contact 1" type="text" onChange={handleChange} required />
+                    <label className="form-label">Contact No.</label>
+                    <input name="emergency_num" className="form-control" placeholder="contact no." type="text" onChange={handleChange} required />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label" >Emergency Contact 1 Name</label>
-                    <input name="emergency1_name" className="form-control" placeholder="Emergency contact 1 Name" type="text" onChange={handleChange} required />
+                    <label className="form-label" >Contact Name</label>
+                    <input name="emergency_name" className="form-control" placeholder="Contact Name" type="text" onChange={handleChange} required />
                 </div>
+                
                 <div className="mb-3">
-                    <label className="form-label">Emergency Contact 2</label>
-                    <input name="emergency2" className="form-control" placeholder="Emergency contact 2" type="text" onChange={handleChange} required />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Emergency Contact 2 Name</label>
-                    <input name="emergency2_name" className="form-control" placeholder="Emergency contact 2 Name" type="text" onChange={handleChange} required />
+                    <label className="form-label">contact relation</label>
+                    <input name="emergency_rel" className="form-control" placeholder="relationship" type="text" onChange={handleChange} required />
                 </div>
             </div>
 

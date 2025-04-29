@@ -2,6 +2,7 @@ import React from "react";
 import {  useNavigate } from "react-router";
 import Detail1 from "./Detail1";
 import Details2 from "./Details2";
+import { saveUser } from "../../../Service/Api";
 
 function Signup(props) {
     const [stage,setStage]=React.useState(0);
@@ -12,15 +13,38 @@ function Signup(props) {
         name:"",
         phone:"",
         dob:"",
-        blood:""
-
+        blood:"",
+        emergency_num:"",
+        emergency_name: "",
+        emergency_rel:""
     })
     const navigator = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(userD)
+        const userData = {
+          adhr: userD.adhr,
+          blood: userD.blood,
+          dob: userD.dob,
+          email: userD.email,
+          emergency: {
+            name: userD.emergency_name,
+            relation: userD.emergency_rel,
+            phone: userD.emergency_num
+          },
+          name: userD.name,
+          password: userD.password,
+          phone: userD.phone,
+          record: []
+        };
+        
+        console.log(userData)
         //backed  wrk
-        navigator("dashboard")
+        saveUser(userData).then(res=>{
+          alert(res.data)
+          location.reload()
+        }).catch(
+          e=>alert(e.data)
+        )
     };
     function handleChange(event){
         const {name,value}=(event.target)

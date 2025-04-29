@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { getUserId } from "../../Service/Api";
 
 function Signin(props) {
         const [email, setEmail] = React.useState("");
@@ -10,7 +11,12 @@ function Signin(props) {
             e.preventDefault();
             console.log("Email:", email);
             console.log("Password:", password);
-            navigator("dashboard")
+            getUserId(email).then(
+              res=>navigator("dashboard/"+res.data)
+            ).catch(
+              e=>alert(e.data)
+            )
+            
         };
   return (
         <div className="col-md-6 p-5 bg-white">

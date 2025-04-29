@@ -1,19 +1,19 @@
-function DashInfo() {
+function DashInfo(props) {
     const info=[
         {
             icon:"calendar4",
             field:"Date of Birth",
-            value:"01-09-2004"
+            value:props.dob
         },
         {
             icon:"telephone",
             field:"Phone",
-            value:"+918220812131"
+            value:props.phn
         },
         {
             icon:"activity",
             field:"Blood Group",
-            value:"O+ve"
+            value:props.blood
         }
     ]
   return (

@@ -5,27 +5,38 @@ import DashInfo from "./DashInfo"
 import DashContact from "./DashContact"
 import DashScans from "./DashScans"
 import DashMedRecords from "../Records/DashMedRecords"
-import { useNavigate } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import Navbar from "../../components/Navbar"
+import React from "react"
+import { getUserData } from "../../Service/Api"
 function DashBoard() {
     const navigator = useNavigate();
+    const [userD,setUserD]=React.useState({})
+    const {id}=useParams()
+    React.useEffect(
+        ()=>{
+            getUserData(id).then(
+                res=>{setUserD(res.data);console.log(res.data)}
+            )
+        },[]
+    )
   return (
     <>
     <Navbar />
     <div className="bg-light d-flex flex-column gap-3 p-4">
         <div className="p-4 d-flex flex-column gap-3 rounded-4 shadow-sm  bg-white">
             <div className="d-sm-flex text-center text-sm-start align-items-center">
-                <DashHeader />
+                <DashHeader name = {userD.name} adhr = {userD.adhr} />
             </div>
             <div className="px-3 d-flex flex-column gap-3 flex-md-row justify-content-between">
-                <DashInfo/>
+                <DashInfo phn={userD.phone} blood={userD.blood} dob={userD.dob} />
             </div>
             <div className="ps-3">
                 <div className="d-flex justify-content-between">
                     <p className="text-primary-emphasis  fw-bold">Emergency Contact</p>
                     <i className="bi fw-bolder text-primary text-decoration-none bi-plus"> Add</i>
                 </div>
-                    <DashContact />
+                    <DashContact  data= {userD.emergency} />
             </div>
         </div>
         <div className="p-4 pb-0 d-flex flex-column gap-3 rounded-4 shadow-sm  bg-white">
