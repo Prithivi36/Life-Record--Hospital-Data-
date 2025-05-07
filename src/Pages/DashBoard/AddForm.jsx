@@ -1,10 +1,12 @@
 import React from 'react'
+import { Scanner } from '@yudiel/react-qr-scanner';
 
 function AddForm() {
     
     const [form,setForm]=React.useState({
         condition :"",
         symptoms:"",
+        user:"",
         prescriptionName: "",
         dosage: "",
         daily: "",
@@ -13,6 +15,9 @@ function AddForm() {
         followup:false,
         followUpD:""
     })
+    function handlescan(data) {
+        setForm((p)=>{return ({...p,user:data})})
+    }
     const [comp,setComp]=React.useState([])
     const [prescriptions, setPrescriptions] = React.useState([]);
     function addPrescription(event) {
@@ -48,6 +53,7 @@ function AddForm() {
         const data ={
             "title": form.condition,
             "followUp":form.followup,
+            "userId":form.user,
             "followUpDate": form.followUpD,
             "doctor": {
               "name": "Dr. Shanmuga Sundaram",
@@ -102,6 +108,13 @@ function AddForm() {
             <div className="modal-body ">
                 <form className='' action="">
                     <p className='fw-bolder mb-3 pb-0'>Condition :</p>
+                    <div className="form-floating">
+                        <input name='user' onChange={()=>handleChange(event)} id='condi' className='form-control mb-3' placeholder='Patient Condition ' type="text" />
+                        <label className='text-secondary fw-medium' htmlFor="condi">User Id</label>
+                            <div style={{ marginTop: '20px' }}>
+                                <Scanner onScan={(result) => console.log(result)} />;
+                            </div>
+                    </div>
                     <div className="form-floating">
                         <input name='condition' onChange={()=>handleChange(event)} id='condi' className='form-control mb-3' placeholder='Patient Condition ' type="text" />
                         <label className='text-secondary fw-medium' htmlFor="condi">Patient Condition</label>

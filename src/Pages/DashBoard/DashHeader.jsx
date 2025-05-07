@@ -1,5 +1,6 @@
 import image from "../../assets/image.png"
 import AddForm from "./AddForm"
+import QRGen from "./QRGen"
 
 
 function DashHeader(props) {
@@ -11,6 +12,9 @@ function DashHeader(props) {
         <div className="d-flex flex-column justify-content-center">
             <h4 className="m-0 fw-bold">{props.name}</h4>
             <p className="text-secondary m-0">ID : {props.adhr}</p>
+        </div>
+        <div className="container w-25">
+          <QRGen text={props.id} />
         </div>
         <button data-bs-target="#addform" data-bs-toggle="modal"   className="btn btn-primary ms-auto">Add Records</button>
         <AddForm/>
