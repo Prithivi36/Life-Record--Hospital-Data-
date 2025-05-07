@@ -1,8 +1,9 @@
 import React from "react";
 import RecordsDetail from "./RecordsDetail/RecordsDetail";
+import { getUserRecords } from "../../Service/Api";
 
 function DashMedRecords(props) {
-    const details=[
+    const detail=[
         {
             condition: "Respiratory Disorder",
             doctor: "Dr. Anjali Gupta",
@@ -28,9 +29,18 @@ function DashMedRecords(props) {
         date: "2024-01-25"
         }
     ]
+    const [details,setDetail] = React.useState([])
+    React.useEffect(() => {
+        console.log(props.id);
+        getUserRecords(props.id).then(res => {
+          const dataArray = Array.isArray(res.data) ? res.data : Object.values(res.data);
+          setDetail(dataArray);
+        });
+      }, []);
+      
     const [show,setShow] = React.useState(null)
     const filteredDetails = props.sample ? details.slice(0, 2) : details;
-
+    console.log("Chkkk",details)
   return (
     <>
     {
@@ -40,15 +50,15 @@ function DashMedRecords(props) {
                 <div key={i} className="">
                     <div onClick={() => setShow(isExpanded ? null : i)} className={`${d.follow?"callout-follow":"callout"} d-flex flex-wrap`}>
                         <div className="p-3 ">
-                            <p className="m-0 fw-medium">{d.condition}</p>
-                            <p className="m-0 text-secondary">{d.doctor}</p>
+                            <p className="m-0 fw-medium">{d.title}</p>
+                            <p className="m-0 text-secondary">{d.doctor.name}</p>
                         </div>
                         <div className="p-3 ms-auto">
-                            <p className="m-0 text-secondary">{d.date}</p>
+                            <p className="m-0 text-secondary">{d.doctor.date}</p>
                         </div>
                     </div>
                     <div className={`collapsible ${isExpanded ? "expanded" : ""}`}>
-                        {isExpanded && <RecordsDetail />}
+                        {isExpanded && <RecordsDetail data={d} />}
                     </div>
                 </div>
             )

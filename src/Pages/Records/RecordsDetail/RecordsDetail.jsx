@@ -1,9 +1,11 @@
 import React from "react";
 import RecordsMain from "../RecordsMain";
 
-function RecordsDetail() {
+function RecordsDetail(props) {
 
-  const data ={
+  const data =props.data
+  
+  const dummy={
     "title": "Hypertension",
     "followUp":true,
     "followUpDate": "10-4-2024",

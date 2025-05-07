@@ -12,3 +12,9 @@ export function getUserData(id){
 export function saveUser(data){
     return axios.post(Base_url+"api/users",data);
 }
+export function saveRecord(data){
+    return axios.post(Base_url+"api/records",data)
+}
+export function getUserRecords(data){
+    return axios.get(Base_url+"api/records/usr/"+data);
+}

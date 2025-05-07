@@ -1,5 +1,6 @@
 import React from 'react'
 import { Scanner } from '@yudiel/react-qr-scanner';
+import { saveRecord } from '../../Service/Api';
 
 function AddForm() {
     
@@ -21,7 +22,8 @@ function AddForm() {
         setForm((p)=>{return ({...p,user:data[0].rawValue})})
         setScan(false)
     }
-    function handlescantoggle(){
+    function handlescantoggle(e){
+        e.preventDefault()
         setScan(true)
     }
     const [comp,setComp]=React.useState([])
@@ -62,7 +64,7 @@ function AddForm() {
             "userId":form.user,
             "followUpDate": form.followUpD,
             "doctor": {
-              "name": "Dr. Shanmuga Sundaram",
+              "name": localStorage.getItem("name"),
               "date": new Date().toLocaleDateString()
             },
             "hospital": "City Hospital",
@@ -71,7 +73,7 @@ function AddForm() {
             "doctorNotes": form.instructions
           }
 
-
+          saveRecord(data).then(res=>alert(res.data))
           console.log(data)
 
       }
@@ -117,7 +119,7 @@ function AddForm() {
                     <div className="form-floating">
                         <input disabled value={form.user} name='user' onChange={()=>handleChange(event)} id='condi' className='form-control mb-3' placeholder='Patient Condition ' type="text" />
                         <label className='text-secondary fw-medium' htmlFor="condi">User Id</label>
-                            <button onClick={handlescantoggle}className="btn btn-primary">Scan</button>
+                            <button type='button' onClick={handlescantoggle}className="btn btn-primary">Scan</button>
                             <div style={{ marginTop: '20px' }}>
                                {scan && <Scanner onScan={(result) => handlescan(result)} />}
                             </div>

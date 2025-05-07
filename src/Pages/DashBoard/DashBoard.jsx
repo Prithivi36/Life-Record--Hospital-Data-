@@ -16,7 +16,7 @@ function DashBoard() {
     React.useEffect(
         ()=>{
             getUserData(id).then(
-                res=>{setUserD(res.data);console.log(res.data)}
+                res=>{setUserD(res.data);console.log(res.data);localStorage.setItem("name",res.data.name)}
             )
         },[]
     )
@@ -41,7 +41,7 @@ function DashBoard() {
         </div>
         <div className="p-4 pb-0 d-flex flex-column gap-3 rounded-4 shadow-sm  bg-white">
             <p className="fs-5 fw-medium">Recent Medical Records</p>
-            <DashMedRecords sample={true} />
+            <DashMedRecords id={id} sample={true} />
             <div className="end">
                 <p onClick={()=>navigator("/records")} className="text-center text-primary text-decoration-none border-top py-3 more m-0">View more</p>
             </div>
