@@ -18,7 +18,7 @@ function AddForm() {
     const [scan,setScan]=React.useState(false)
     function handlescan(data) {
         console.log(data)
-        setForm((p)=>{return ({...p,user:data[0]})})
+        setForm((p)=>{return ({...p,user:data[0].rawValue})})
         setScan(false)
     }
     function handlescantoggle(){
@@ -115,7 +115,7 @@ function AddForm() {
                 <form className='' action="">
                     <p className='fw-bolder mb-3 pb-0'>Condition :</p>
                     <div className="form-floating">
-                        <input value={form.user} name='user' onChange={()=>handleChange(event)} id='condi' className='form-control mb-3' placeholder='Patient Condition ' type="text" />
+                        <input disabled value={form.user} name='user' onChange={()=>handleChange(event)} id='condi' className='form-control mb-3' placeholder='Patient Condition ' type="text" />
                         <label className='text-secondary fw-medium' htmlFor="condi">User Id</label>
                             <button onClick={handlescantoggle}className="btn btn-primary">Scan</button>
                             <div style={{ marginTop: '20px' }}>
