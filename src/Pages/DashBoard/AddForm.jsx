@@ -1,8 +1,8 @@
 import React from 'react'
 import { Scanner } from '@yudiel/react-qr-scanner';
-import { saveRecord } from '../../Service/Api';
+import { getDocD, saveRecord } from '../../Service/Api';
 
-function AddForm() {
+function AddForm(props) {
     
     const [form,setForm]=React.useState({
         condition :"",
@@ -16,6 +16,12 @@ function AddForm() {
         followup:false,
         followUpD:""
     })
+    const [DocD , setDocD]=React.useState({})
+    React.useEffect(
+        ()=>{
+            getDocD(id).then(res=>setDocD(res.data))
+        },[]
+    )
     const [scan,setScan]=React.useState(false)
     function handlescan(data) {
         console.log(data)
@@ -67,7 +73,7 @@ function AddForm() {
               "name": localStorage.getItem("name"),
               "date": new Date().toLocaleDateString()
             },
-            "hospital": "City Hospital",
+            "hospital": DocD.hospital,
             "symptoms": comp,
             "prescriptions": prescriptions,
             "doctorNotes": form.instructions

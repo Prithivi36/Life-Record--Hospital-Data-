@@ -16,8 +16,8 @@ function DashHeader(props) {
         <div className="container w-25">
           <QRGen text={props.id} />
         </div>
-        <button data-bs-target="#addform" data-bs-toggle="modal"   className="btn btn-primary ms-auto">Add Records</button>
-        <AddForm/>
+        {props.isD&&<button data-bs-target="#addform" data-bs-toggle="modal"   className="btn btn-primary ms-auto">Add Records</button>}
+        <AddForm id = {props.id}/>
     </>
   )
 }

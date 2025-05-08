@@ -16,7 +16,10 @@ function DashBoard() {
     React.useEffect(
         ()=>{
             getUserData(id).then(
-                res=>{setUserD(res.data);console.log(res.data);localStorage.setItem("name",res.data.name)}
+                res=>{setUserD(res.data);console.log(res.data);
+                    localStorage.setItem("name",res.data.name);
+                    localStorage.setItem("isdoc","yes");
+                }
             )
         },[]
     )
@@ -26,7 +29,7 @@ function DashBoard() {
     <div className="bg-light d-flex flex-column gap-3 p-4">
         <div className="p-4 d-flex flex-column gap-3 rounded-4 shadow-sm  bg-white">
             <div className="d-sm-flex text-center text-sm-start align-items-center">
-                <DashHeader name = {userD.name} adhr = {userD.adhr} id={userD._id} />
+                <DashHeader idD={localStorage.getItem("isdoc")==="yes"} name = {userD.name} adhr = {userD.adhr} id={userD._id} />
             </div>
             <div className="px-3 d-flex flex-column gap-3 flex-md-row justify-content-between">
                 <DashInfo phn={userD.phone} blood={userD.blood} dob={userD.dob} />

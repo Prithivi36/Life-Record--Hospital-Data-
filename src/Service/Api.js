@@ -18,3 +18,6 @@ export function saveRecord(data){
 export function getUserRecords(data){
     return axios.get(Base_url+"api/records/usr/"+data);
 }
+export function getDocD(id){
+    return axios.get(Base_url+"api/users/")
+}
